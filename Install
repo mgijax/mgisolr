@@ -1,0 +1,4 @@
+#!/bin/sh
+
+chmod ug+x buildInstance
+chmod ug+x rebuildInstance

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Purpose: rebuilds a directory hierarchy for a Solr server (refreshes the index definitions)
+
+USAGE="Usage: $0 <path to server> [port]
+    path to server : path to the Solr server's directory
+    port : what port should Solr listen on?
+Notes:
+    1) The type of Solr server (fe, gxd, or snp) will be detected from the existing directory.
+    2) The listening port is optional and will be maintained from the existing directory if not specified.
+"

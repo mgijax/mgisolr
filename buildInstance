@@ -1,0 +1,100 @@
+#!/bin/sh
+
+# Purpose: builds a directory hierarchy for a Solr server
+
+# write to stdout the usage statement for this script
+showUsage()
+{
+    echo "Usage: $0 <set> <port> <parent dir> <name>"
+    echo "    set : which set of indexes will this Solr instance contain? (fe, gxd, snp)"
+    echo "    port : what port should this Solr instance listen on?"
+    echo "    parent dir : path to the parent directory of this Solr instance"
+    echo "    name : name of the specific directory for the Solr instance"
+}
+
+# expects an error message to be passed in, which is then sent to stderr and then exits
+# the script with a non-zero exit code
+errorExit()
+{
+    echo "Error: $1" 1>&2
+    exit 1
+}
+
+# check and extract parameters
+
+if [ $# -lt 4 ]; then
+    showUsage
+    errorExit "Too few parameters; expected 4, received $#"
+fi
+
+SET=$1
+PORT=$2
+PARENT_DIR=$3
+NAME=$4
+
+# Strip any trailing slash from the parent directory, then join to target directory.
+TARGET_DIR=`echo ${PARENT_DIR} | sed 's^/$^^'`/${NAME}
+
+echo ${TARGET_DIR}
+
+# Check count of index definition files for the specific set (direct errors to
+# /dev/null); if not 1, then we have an error.
+if [ `ls -al ./sets/${SET}.indexes 2>/dev/null | wc -l` -ne 1 ]; then
+    errorExit "Unrecognized set (${SET}) of indexes.  Choose fe, gxd, or snp."
+fi
+
+# Check that parent directory exists.
+if [ ! -d ${PARENT_DIR} ]; then
+    errorExit "Parent directory (${PARENT_DIR}) does not exist."
+fi
+
+# Check that target directory does not exist.
+if [ -d ${TARGET_DIR} ]; then
+    errorExit "Target directory (${TARGET_DIR}) already exists."
+fi
+
+# make target directory
+mkdir ${TARGET_DIR}
+if [ $? -ne 0 ]; then
+    errorExit "Failed to make target directory: ${TARGET_DIR}"
+fi
+
+# copy solr.xml into target directory
+cp sets/${SET}.solr.xml ${TARGET_DIR}/solr.xml
+if [ $? -ne 0 ]; then
+    errorExit "Failed to copy sets/${SET}.solr.xml to ${TARGET_DIR}/solr.xml"
+fi
+
+# Walk through list of cores for this set and set up the target directory for each.
+# (skip comment lines and remove whitespace from core names)
+for core in `cat sets/${SET}.indexes | grep -v '^#' | tr -d '[:space:]'`
+do
+    CORE_DIR=${TARGET_DIR}/core
+    mkdir ${CORE_DIR}
+    if [ $? -ne 0 ]; then
+        errorExit "Failed to make directory ${CORE_DIR}"
+    fi
+
+    cp cores/${core}/core.properties ${CORE_DIR}
+    if [ $? -ne 0 ]; then
+        errorExit "Failed to copy core.properties into ${CORE_DIR}"
+    fi
+
+    mkdir ${CORE_DIR}/data
+    if [ $? -ne 0 ]; then
+        errorExit "Failed to make directory ${CORE_DIR}/data"
+    fi
+
+    mkdir ${CORE_DIR}/conf
+    if [ $? -ne 0 ]; then
+        errorExit "Failed to make directory ${CORE_DIR}/conf"
+    fi
+
+    cp cores/${core}/*.xml ${CORE_DIR}/conf
+    if [ $? -ne 0 ]; then
+        errorExit "Failed to copy xml files into ${CORE_DIR}/conf"
+    fi
+
+    echo "Built ${core}"
+done
+
