@@ -1131,10 +1131,11 @@
     <!-- UUIDUpdateProcessorFactory will generate an id if none is present in the incoming document -->
     <processor class="solr.UUIDUpdateProcessorFactory" />
     <processor class="solr.RemoveBlankFieldUpdateProcessorFactory"/>
-    <processor class="solr.FieldNameMutatingUpdateProcessorFactory">
+<!--    <processor class="solr.FieldNameMutatingUpdateProcessorFactory">
       <str name="pattern">[^\w-\.]</str>
       <str name="replacement">_</str>
     </processor>
+-->
     <processor class="solr.ParseBooleanFieldUpdateProcessorFactory"/>
     <processor class="solr.ParseLongFieldUpdateProcessorFactory"/>
     <processor class="solr.ParseDoubleFieldUpdateProcessorFactory"/>
@@ -1149,6 +1150,7 @@
         <str>EEE MMM ppd HH:mm:ss [z ]yyyy</str>
       </arr>
     </processor>
+<!--
     <processor class="solr.AddSchemaFieldsUpdateProcessorFactory">
       <str name="defaultFieldType">strings</str>
       <lst name="typeMapping">
@@ -1169,14 +1171,16 @@
         <str name="fieldType">pdoubles</str>
       </lst>
     </processor>
+-->
 
-
+<!--
     <processor class="org.apache.solr.update.processor.LangDetectLanguageIdentifierUpdateProcessorFactory">
       <lst name="defaults">
         <str name="langid.fl">content</str>
         <str name="langid.langField">language</str>
       </lst>
     </processor>
+-->
 
 <!--    <processor class="solr.StatelessScriptUpdateProcessorFactory"> -->
       <!-- <str name="script">update-script.js</str> -->
