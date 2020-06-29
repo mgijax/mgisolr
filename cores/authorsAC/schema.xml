@@ -266,7 +266,7 @@
   <field name="isGenerated" type="pint" indexed="true" stored="true" />
 
   <!-- This is a Solr-required field -->
-  <field name="_version_" type="pint" indexed="true" stored="true" />
+  <field name="_version_" type="plong" indexed="true" stored="true" />
 
   <uniqueKey>acUniqueKey</uniqueKey>
 
