@@ -95,6 +95,11 @@ do
         errorExit "Failed to copy xml files into ${CORE_DIR}/conf"
     fi
 
+    if [ -f cores/${core}/stopwords.txt ]; then
+      cp cores/${core}/stopwords.txt ${CORE_DIR}/conf
+    fi
+
+
     echo "Built ${core}"
 done
 
