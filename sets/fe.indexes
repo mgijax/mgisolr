@@ -1,2 +1,4 @@
 # names of indexes expected to be in an fe Solr server, one per line
 authorsAC
+journalsAC
+strainAC

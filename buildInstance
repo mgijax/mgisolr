@@ -67,9 +67,9 @@ fi
 
 # Walk through list of cores for this set and set up the target directory for each.
 # (skip comment lines and remove whitespace from core names)
-for core in `cat sets/${SET}.indexes | grep -v '^#' | tr -d '[:space:]'`
+for core in `cat sets/${SET}.indexes | grep -v '^#'`
 do
-    CORE_DIR=${TARGET_DIR}/core
+    CORE_DIR=${TARGET_DIR}/${core}
     mkdir ${CORE_DIR}
     if [ $? -ne 0 ]; then
         errorExit "Failed to make directory ${CORE_DIR}"
