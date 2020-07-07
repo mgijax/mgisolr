@@ -1,11 +1,11 @@
 # names of indexes expected to be in an fe Solr server, one per line
-authorsAC
-journalsAC
-driverAC
+allele
 anatomyAC
+authorsAC
+driverAC
 emapaAC
 gxdEmapaAC
-vocabTermAC
+journalsAC
 marker
-allele
 strain
+vocabTermAC
