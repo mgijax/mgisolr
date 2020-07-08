@@ -2,10 +2,13 @@
 allele
 anatomyAC
 authorsAC
+cdna
 driverAC
 emapaAC
 gxdEmapaAC
 journalsAC
 marker
+probe
+reference
 strain
 vocabTermAC
