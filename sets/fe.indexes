@@ -13,8 +13,11 @@ emapaAC
 gxdEmapaAC
 gxdHtExperiment
 gxdHtSample
+image
 journalsAC
 marker
+mpAnnotation
+mpCorrelationMatrix
 probe
 recombinaseMatrix
 reference
