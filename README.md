@@ -1,6 +1,6 @@
 The mgisolr product includes:
 1. the definitions for the various Solr indexes supporting the MGI web site
-2. knowledge of how to take those definitions and build the necessary directory hierarchies for the fe, snp, and gxd Solr servers
+2. knowledge of how to take those definitions and build the necessary directory hierarchies for the fe, snp, and gxd Solr instances
 
 It assumes:
 - the Solr executable resides elsewhere in the file system
