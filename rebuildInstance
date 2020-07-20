@@ -1,11 +1,94 @@
 #!/bin/sh
 
-# Purpose: rebuilds a directory hierarchy for a Solr server (refreshes the index definitions)
+# Purpose: updates a directory hierarchy for a Solr server
 
-USAGE="Usage: $0 <path to server> [port]
-    path to server : path to the Solr server's directory
-    port : what port should Solr listen on?
-Notes:
-    1) The type of Solr server (fe, gxd, or snp) will be detected from the existing directory.
-    2) The listening port is optional and will be maintained from the existing directory if not specified.
-"
+# write to stdout the usage statement for this script
+showUsage()
+{
+    echo "Usage: $0 <set> <data dir>"
+    echo "    set : which set of indexes will this Solr instance contain? (fe, gxd, snp)"
+    echo "    data dir : path to the directory of this Solr instance"
+}
+
+# expects an error message to be passed in, which is then sent to stderr and then exits
+# the script with a non-zero exit code
+errorExit()
+{
+    echo "Error: $1" 1>&2
+    exit 1
+}
+
+# check and extract parameters
+
+if [ $# -lt 2 ]; then
+    showUsage
+    errorExit "Too few parameters; expected 2, received $#"
+fi
+
+SET=$1
+TARGET_DIR=$2
+
+# Check count of index definition files for the specific set (direct errors to
+# /dev/null); if not 1, then we have an error.
+if [ `ls -al ./sets/${SET}.indexes 2>/dev/null | wc -l` -ne 1 ]; then
+    errorExit "Unrecognized set (${SET}) of indexes.  Choose fe, gxd, or snp."
+fi
+
+# Check that parent directory exists.
+if [ ! -d ${TARGET_DIR} ]; then
+    errorExit "Solr instance directory (${TARGET_DIR}) does not exist."
+fi
+
+# copy solr.xml into target directory
+cp sets/${SET}.solr.xml ${TARGET_DIR}/solr.xml
+if [ $? -ne 0 ]; then
+    errorExit "Failed to copy sets/${SET}.solr.xml to ${TARGET_DIR}/solr.xml"
+fi
+
+# Walk through list of cores for this set and set up the target directory for each.
+# (skip comment lines and remove whitespace from core names)
+for core in `cat sets/${SET}.indexes | grep -v '^#'`
+do
+    MSG="Reconfigured"
+    CORE_DIR=${TARGET_DIR}/${core}
+
+    # If this is a new core, add a directory.  Otherwise, just update it.
+    if [ ! -d ${CORE_DIR} ]; then
+        mkdir ${CORE_DIR}
+        if [ $? -ne 0 ]; then
+            errorExit "Failed to make directory ${CORE_DIR}"
+        fi
+
+        mkdir ${CORE_DIR}/data
+        if [ $? -ne 0 ]; then
+            errorExit "Failed to make directory ${CORE_DIR}/data"
+        fi
+
+        mkdir ${CORE_DIR}/conf
+        if [ $? -ne 0 ]; then
+            errorExit "Failed to make directory ${CORE_DIR}/conf"
+        fi
+
+        MSG="Built"
+    fi
+
+    cp cores/${core}/core.properties ${CORE_DIR}
+    if [ $? -ne 0 ]; then
+        errorExit "Failed to copy core.properties into ${CORE_DIR}"
+    fi
+
+    cp cores/${core}/*.xml ${CORE_DIR}/conf
+    if [ $? -ne 0 ]; then
+        errorExit "Failed to copy xml files into ${CORE_DIR}/conf"
+    fi
+
+    if [ -f cores/${core}/stopwords.txt ]; then
+        cp cores/${core}/stopwords.txt ${CORE_DIR}/conf
+        if [ $? -ne 0 ]; then
+            errorExit "Failed to copy stopwords.txt into ${CORE_DIR}/conf"
+        fi
+    fi
+
+    echo "${MSG} ${core}"
+done
+echo "Finished"

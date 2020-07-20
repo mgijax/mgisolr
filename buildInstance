@@ -5,11 +5,12 @@
 # write to stdout the usage statement for this script
 showUsage()
 {
-    echo "Usage: $0 <set> <port> <parent dir> <name>"
+    echo "Usage: $0 <set> <port> <parent dir> <name> [replace]"
     echo "    set : which set of indexes will this Solr instance contain? (fe, gxd, snp)"
     echo "    port : what port should this Solr instance listen on?"
     echo "    parent dir : path to the parent directory of this Solr instance"
     echo "    name : name of the specific directory for the Solr instance"
+    echo "    replace : if the replace keyword is included as the fifth parameter, first remove existing directory contents"
 }
 
 # expects an error message to be passed in, which is then sent to stderr and then exits
@@ -28,14 +29,12 @@ if [ $# -lt 4 ]; then
 fi
 
 SET=$1
-PORT=$2
+PORT=$2                 # TO DO: need to get this to startup routines
 PARENT_DIR=$3
 NAME=$4
 
 # Strip any trailing slash from the parent directory, then join to target directory.
 TARGET_DIR=`echo ${PARENT_DIR} | sed 's^/$^^'`/${NAME}
-
-echo ${TARGET_DIR}
 
 # Check count of index definition files for the specific set (direct errors to
 # /dev/null); if not 1, then we have an error.
@@ -46,6 +45,19 @@ fi
 # Check that parent directory exists.
 if [ ! -d ${PARENT_DIR} ]; then
     errorExit "Parent directory (${PARENT_DIR}) does not exist."
+fi
+
+# If the target directory already exists and the user specified to replace it, then
+# we first need to remove it.
+if [ $# -ge 5 ]; then
+    if [ "$5" == "replace" ]; then
+        rm -rf ${TARGET_DIR}
+        if [ $? -ne 0 ]; then
+            errorExit "Failed to remove contents of ${TARGET_DIR}"
+        fi
+    else
+        errorExit "Unrecognized fifth parameter: $5"
+    fi
 fi
 
 # Check that target directory does not exist.
@@ -59,11 +71,22 @@ if [ $? -ne 0 ]; then
     errorExit "Failed to make target directory: ${TARGET_DIR}"
 fi
 
+# make logs directory within target directory
+LOG_DIR=${TARGET_DIR}/logs
+mkdir ${LOG_DIR}
+chmod ug+w ${LOG_DIR}
+
 # copy solr.xml into target directory
 cp sets/${SET}.solr.xml ${TARGET_DIR}/solr.xml
 if [ $? -ne 0 ]; then
     errorExit "Failed to copy sets/${SET}.solr.xml to ${TARGET_DIR}/solr.xml"
 fi
+
+# copy start/stop scripts and update parameters as needed
+cat templates/startSolr.template | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" | sed "s:<<DATA_DIR>>:${TARGET_DIR}:g" > ${TARGET_DIR}/startSolr.sh
+cat templates/stopSolr.template | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" > ${TARGET_DIR}/stopSolr.sh
+chmod ug+x ${TARGET_DIR}/startSolr.sh
+chmod ug+x ${TARGET_DIR}/stopSolr.sh
 
 # Walk through list of cores for this set and set up the target directory for each.
 # (skip comment lines and remove whitespace from core names)
@@ -96,10 +119,12 @@ do
     fi
 
     if [ -f cores/${core}/stopwords.txt ]; then
-      cp cores/${core}/stopwords.txt ${CORE_DIR}/conf
+        cp cores/${core}/stopwords.txt ${CORE_DIR}/conf
+        if [ $? -ne 0 ]; then
+            errorExit "Failed to copy stopwords.txt into ${CORE_DIR}/conf"
+        fi
     fi
-
 
     echo "Built ${core}"
 done
-
+echo "Finished"

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# script for stopping a Solr instance
+
+# expects an error message to be passed in, which is then sent to stderr and then exits
+# the script with a non-zero exit code
+errorExit()
+{
+    echo "Error: $1" 1>&2
+    exit 1
+}
+
+# Expect a SOLR_HOME variable to be defined, and check it.
+if [ "${SOLR_HOME}" -eq "" ]; then
+    errorExit "SOLR_HOME is not defined"
+fi
+if [ ! -d ${SOLR_HOME} ]; then
+    errorExit "SOLR_HOME is not a valid directory: ${SOLR_HOME}"
+fi
+
+# Remember where we started, then go to Solr's bin/ directory.
+CWD=`pwd`
+cd ${SOLR_HOME}/bin
+
+./solr stop -p <<PORT>>
+CODE=$?
+cd ${CWD}
+exit ${CODE}
