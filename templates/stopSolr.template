@@ -11,7 +11,7 @@ errorExit()
 }
 
 # Expect a SOLR_HOME variable to be defined, and check it.
-if [ "${SOLR_HOME}" -eq "" ]; then
+if [ "${SOLR_HOME}" == "" ]; then
     errorExit "SOLR_HOME is not defined"
 fi
 if [ ! -d ${SOLR_HOME} ]; then
