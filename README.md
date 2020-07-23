@@ -24,3 +24,23 @@ To add a new Solr index (adding index `y` to Solr instance `x`, for instance):
 7. Add &lt;fieldType&gt; and &lt;field&gt; definitions as needed.
 8. Add &lt;copyField&gt; definitions if needed.
 9. Ensure &lt;uniqueKey&gt; is set properly.
+
+To build a new installation for instance `x` under directory `a`, named as subdirectory `b`, and running on port `c`:
+1. Set your SOLR_HOME environment variable to the installation directory for Solr itself.
+2. Go into your `mgisolr/` directory.
+3. Run `./buildInstance x c a b`.
+4. At that point, you can `cd a/b` and then run `./startSolr.sh`
+
+To apply updated index definitions to an instance of `x` that lives in directory `d` and NOT erase the contents of those directories (so you can re-index a single core and leave the others as-is):
+1. Set your SOLR_HOME environment variable to the installation directory for Solr itself.
+2. `cd d`
+3. Run `./stopSolr.sh`
+4. Go into your `mgisolr/` directory.
+5. Run `./rebuildInstance x d`.
+6. At that point, you can `cd d` and then run `./startSolr.sh`
+
+To completely rebuild a new installation for instance `x` under directory `a`, named as subdirectory `b`, and running on port `c` (leaving empty indexes):
+1. Set your SOLR_HOME environment variable to the installation directory for Solr itself.
+2. Go into your `mgisolr/` directory.
+3. Run `./buildInstance x c a b replace`.
+4. At that point, you can `cd a/b` and then run `./startSolr.sh`
