@@ -10,6 +10,7 @@ To add support for a new Solr instance (named `x`, for instance):
 1. Go into the `sets/` directory.
 2. Create a new `x.indexes` file.  It can be empty at first.  It will have one index (core) name on each line when you add indexes.
 3. Create a new `x.solr.xml` file to define its Solr configuration.  This can likely just be a copy of `fe.solr.xml`.
+3. Create a new `x.ram` file to define how much RAM to devote to Solr.  (This sets both -Xms and -Xms for the JVM.)
 
 To add a new Solr index (adding index `y` to Solr instance `x`, for instance):
 1. Open `sets/x.indexes`.
