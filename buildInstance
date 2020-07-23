@@ -50,7 +50,7 @@ fi
 # If the target directory already exists and the user specified to replace it, then
 # we first need to remove it.
 if [ $# -ge 5 ]; then
-    if [ "$5" == "replace" ]; then
+    if [ "$5" = "replace" ]; then
         rm -rf ${TARGET_DIR}
         if [ $? -ne 0 ]; then
             errorExit "Failed to remove contents of ${TARGET_DIR}"
@@ -82,8 +82,15 @@ if [ $? -ne 0 ]; then
     errorExit "Failed to copy sets/${SET}.solr.xml to ${TARGET_DIR}/solr.xml"
 fi
 
+# pick up the memory setting for the set
+RAM_FILE=sets/${SET}.ram
+if [ ! -f ${RAM_FILE} ]; then
+    errorExit "Cannot find ${RAM_FILE} for memory setting"
+fi
+RAM=`cat ${RAM_FILE} | grep -v '^#'`
+
 # copy start/stop scripts and update parameters as needed
-cat templates/startSolr.template | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" | sed "s:<<DATA_DIR>>:${TARGET_DIR}:g" > ${TARGET_DIR}/startSolr.sh
+cat templates/startSolr.template | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" | sed "s:<<DATA_DIR>>:${TARGET_DIR}:g" | sed "s/<<RAM>>/${RAM}/g" > ${TARGET_DIR}/startSolr.sh
 cat templates/stopSolr.template | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" > ${TARGET_DIR}/stopSolr.sh
 chmod ug+x ${TARGET_DIR}/startSolr.sh
 chmod ug+x ${TARGET_DIR}/stopSolr.sh
