@@ -26,7 +26,7 @@ cd ${SOLR_HOME}/bin
 SOLR_LOGS_DIR="<<LOG_DIR>>"
 export SOLR_LOGS_DIR
 
-./solr start -s <<DATA_DIR>> -p <<PORT>>
+./solr start -s <<DATA_DIR>> -p <<PORT>> -m 8g
 CODE=$?
 cd ${CWD}
 exit ${CODE}
