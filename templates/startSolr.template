@@ -10,17 +10,15 @@ errorExit()
     exit 1
 }
 
-# Expect a SOLR_HOME variable to be defined, and check it.
-if [ "${SOLR_HOME}" = "" ]; then
-    errorExit "SOLR_HOME is not defined"
-fi
-if [ ! -d ${SOLR_HOME} ]; then
-    errorExit "SOLR_HOME is not a valid directory: ${SOLR_HOME}"
+SOLR_PATH=<<SOLR_PATH>>
+
+if [ ! -d ${SOLR_PATH} ]; then
+    errorExit "SOLR_PATH is not a valid directory: ${SOLR_PATH}"
 fi
 
 # Remember where we started, then go to Solr's bin/ directory.
 CWD=`pwd`
-cd ${SOLR_HOME}/bin
+cd ${SOLR_PATH}/bin
 
 # TO DO: set environment variable to set the directory for logging.
 SOLR_LOGS_DIR="<<LOG_DIR>>"
