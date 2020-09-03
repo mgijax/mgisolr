@@ -89,9 +89,11 @@ if [ ! -f ${RAM_FILE} ]; then
 fi
 RAM=`cat ${RAM_FILE} | grep -v '^#'`
 
+SOLR_PATH=`grep "^SOLR_PATH" Configuration | sed "s/ [ ]*/ /" | cut -d' ' -f2`
+
 # copy start/stop scripts and update parameters as needed
-cat templates/startSolr.template | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" | sed "s:<<DATA_DIR>>:${TARGET_DIR}:g" | sed "s/<<RAM>>/${RAM}/g" > ${TARGET_DIR}/startSolr.sh
-cat templates/stopSolr.template | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" > ${TARGET_DIR}/stopSolr.sh
+cat templates/startSolr.template | sed "s:<<SOLR_PATH>>:${SOLR_PATH}:g" | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" | sed "s:<<DATA_DIR>>:${TARGET_DIR}:g" | sed "s/<<RAM>>/${RAM}/g" > ${TARGET_DIR}/startSolr.sh
+cat templates/stopSolr.template | sed "s:<<SOLR_PATH>>:${SOLR_PATH}:g" | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" > ${TARGET_DIR}/stopSolr.sh
 chmod ug+x ${TARGET_DIR}/startSolr.sh
 chmod ug+x ${TARGET_DIR}/stopSolr.sh
 
