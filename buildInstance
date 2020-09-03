@@ -89,7 +89,16 @@ if [ ! -f ${RAM_FILE} ]; then
 fi
 RAM=`cat ${RAM_FILE} | grep -v '^#'`
 
+# make sure the Configuration file exists
+if [ ! -f Configuration ]; then
+    errorExit "Configuration file does not exist."
+fi
+
+# get the SOLR_PATH setting from the Configuration file
 SOLR_PATH=`grep "^SOLR_PATH" Configuration | sed "s/ [ ]*/ /" | cut -d' ' -f2`
+if [ "${SOLR_PATH}" = "" ]; then
+    errorExit "Cannot find SOLR_PATH setting."
+fi
 
 # copy start/stop scripts and update parameters as needed
 cat templates/startSolr.template | sed "s:<<SOLR_PATH>>:${SOLR_PATH}:g" | sed "s/<<PORT>>/${PORT}/g" | sed "s:<<LOG_DIR>>:${LOG_DIR}:g" | sed "s:<<DATA_DIR>>:${TARGET_DIR}:g" | sed "s/<<RAM>>/${RAM}/g" > ${TARGET_DIR}/startSolr.sh
