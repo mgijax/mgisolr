@@ -23,6 +23,7 @@ markerAnnotation
 mpAnnotation
 mpCorrelationMatrix
 probe
+qsVocabBucket
 recombinaseMatrix
 reference
 sequence
