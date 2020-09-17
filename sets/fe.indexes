@@ -24,6 +24,7 @@ mpAnnotation
 mpCorrelationMatrix
 probe
 qsVocabBucket
+qsFeatureBucket
 recombinaseMatrix
 reference
 sequence
