@@ -303,6 +303,11 @@
   <field name="diseaseAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="proteinDomains" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
 
+  <!-- handling of non-mouse nomenclature:  first has "<organism term type>:<term>", the last has just the values
+       for searching -->
+  <field name="orthologNomenOrg" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="orthologNomen" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+
   <field name="searchText" type="termType" indexed="true" stored="false" required="false" multiValued="true" />
 
   <!-- This is a Solr-required field -->
@@ -310,12 +315,7 @@
 
   <uniqueKey>primaryID</uniqueKey>
 
-  <!-- dump everything we'd like to search into the searchText field -->
-  <copyField source="primaryID" dest="searchText" />
-  <copyField source="accID" dest="searchText" />
-  <copyField source="symbol" dest="searchText" />
-  <copyField source="name" dest="searchText" />
-  <copyField source="synonym" dest="searchText" />
+  <!-- dump all the non-ID, non-nomenclature stuff to search into the searchText field -->
   <copyField source="functionAnnotations" dest="searchText" />
   <copyField source="processAnnotations" dest="searchText" />
   <copyField source="componentAnnotations" dest="searchText" />
@@ -324,6 +324,7 @@
   <copyField source="gxdAnnotations" dest="searchText" />
   <copyField source="diseaseAnnotations" dest="searchText" />
   <copyField source="proteinDomains" dest="searchText" />
+  <copyField source="orthologNomen" dest="searchText" />
 
 <!-- end custom data for this index -->
 </schema>
