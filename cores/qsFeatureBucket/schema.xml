@@ -293,9 +293,21 @@
 
   <field name="tags" type="string" indexed="true" stored="true" required="false" />
 
-  <field name="functionAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="processAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="componentAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="functionAnnotationsID" type="string" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="functionAnnotationsTerm" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="functionAnnotationsSynonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="functionAnnotationsDefinition" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+
+  <field name="processAnnotationsID" type="string" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="processAnnotationsTerm" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="processAnnotationsSynonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="processAnnotationsDefinition" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+
+  <field name="componentAnnotationsID" type="string" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="componentAnnotationsTerm" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="componentAnnotationsSynonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="componentAnnotationsDefinition" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+
   <field name="phenotypeAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="humanPhenotypeAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="gxdAnnotationsWithTS" type="termType" indexed="false" stored="true" required="false" multiValued="true" />
@@ -316,9 +328,21 @@
   <uniqueKey>primaryID</uniqueKey>
 
   <!-- dump all the non-ID, non-nomenclature stuff to search into the searchText field -->
-  <copyField source="functionAnnotations" dest="searchText" />
-  <copyField source="processAnnotations" dest="searchText" />
-  <copyField source="componentAnnotations" dest="searchText" />
+  <copyField source="functionAnnotationsID" dest="searchText" />
+  <copyField source="functionAnnotationsTerm" dest="searchText" />
+  <copyField source="functionAnnotationsSynonym" dest="searchText" />
+  <copyField source="functionAnnotationsDefinition" dest="searchText" />
+
+  <copyField source="processAnnotationsID" dest="searchText" />
+  <copyField source="processAnnotationsTerm" dest="searchText" />
+  <copyField source="processAnnotationsSynonym" dest="searchText" />
+  <copyField source="processAnnotationsDefinition" dest="searchText" />
+
+  <copyField source="componentAnnotationsID" dest="searchText" />
+  <copyField source="componentAnnotationsTerm" dest="searchText" />
+  <copyField source="componentAnnotationsSynonym" dest="searchText" />
+  <copyField source="componentAnnotationsDefinition" dest="searchText" />
+
   <copyField source="phenotypeAnnotations" dest="searchText" />
   <copyField source="humanPhenotypeAnnotations" dest="searchText" />
   <copyField source="gxdAnnotations" dest="searchText" />
