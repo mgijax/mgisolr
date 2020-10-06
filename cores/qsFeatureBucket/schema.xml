@@ -315,6 +315,14 @@
   <field name="diseaseAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="proteinDomains" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
 
+  <!-- fields to be used for filtering results -->
+  <field name="goProcessFacets" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="goFunctionFacets" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="goComponentFacets" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="diseaseFacets" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="phenotypeFacets" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="markerTypeFacets" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+
   <!-- handling of non-mouse nomenclature:  first has "<organism term type>:<term>", the last has just the values
        for searching -->
   <field name="orthologNomenOrg" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
