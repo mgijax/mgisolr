@@ -288,6 +288,14 @@
   <field name="annotationUri" type="string" indexed="false" stored="true" required="false" />
   <field name="sequenceNum" type="pint" indexed="true" stored="true" required="false" />
 
+  <!-- fields to be used for filtering results, must be kept in sync with qsFeatureBucket schema -->
+  <field name="goProcessFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="goFunctionFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="goComponentFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="diseaseFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="phenotypeFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="markerTypeFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
+
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
 
