@@ -283,6 +283,7 @@
   <field name="synonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="definition" type="termType" indexed="true" stored="true" required="false" />
   <field name="vocabName" type="string" indexed="true" stored="true" required="true" />
+  <field name="rawVocabName" type="string" indexed="true" stored="true" required="false" />
   <field name="detailUri" type="string" indexed="false" stored="true" required="false" />
   <field name="annotationCount" type="plong" indexed="true" stored="true" required="false" />
   <field name="annotationText" type="string" indexed="false" stored="true" required="false" />
