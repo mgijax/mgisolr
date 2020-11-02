@@ -286,6 +286,11 @@
   <field name="synonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="sequenceNum" type="plong" indexed="true" stored="true" required="false" />
 
+  <!-- These 3 are for finding alleles by their corresponding marker's nomenclature fields. -->
+  <field name="markerSymbol" type="termType" indexed="true" stored="true" required="false" />
+  <field name="markerName" type="termType" indexed="true" stored="true" required="false" />
+  <field name="markerSynonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
+
   <field name="chromosome" type="string" indexed="true" stored="true" required="false" />
   <field name="startCoord" type="plong" indexed="true" stored="true" required="false" />
   <field name="endCoord" type="plong" indexed="true" stored="true" required="false" />
