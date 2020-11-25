@@ -276,51 +276,31 @@
     </analyzer>
   </fieldType>
 
-  <field name="primaryID" type="string" indexed="true" stored="true" required="true" />
-  <field name="isMarker" type="pint" indexed="true" stored="true" required="false" />
+<!-- fields related to searching , either searchID or searchTerm should be populated -->
+
+  <field name="uniqueKey" type="string" indexed="true" stored="true" required="true" />
+  <field name="searchID" type="textTight" indexed="true" stored="true" required="false" />
+  <field name="searchTerm" type="termType" indexed="true" stored="true" required="false" />
+  <field name="searchTermDisplay" type="string" indexed="false" stored="true" required="true" />
+  <field name="searchTermType" type="string" indexed="true" stored="true" required="true" />
+  <field name="searchTermWeight" type="pint" indexed="true" stored="true" required="true" />
+
+<!-- fields related to display -->
+
   <field name="featureType" type="string" indexed="true" stored="true" required="false" />
-  <field name="accID" type="textTight" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="isMarker" type="pint" indexed="true" stored="true" required="false" />
   <field name="symbol" type="termType" indexed="true" stored="true" required="false" />
+  <field name="primaryID" type="string" indexed="true" stored="true" required="true" />
   <field name="name" type="termType" indexed="true" stored="true" required="false" />
   <field name="detailUri" type="string" indexed="false" stored="true" required="false" />
-  <field name="synonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="sequenceNum" type="plong" indexed="true" stored="true" required="false" />
-
-  <!-- These 3 are for finding alleles by their corresponding marker's nomenclature fields. -->
-  <field name="markerSymbol" type="termType" indexed="true" stored="true" required="false" />
-  <field name="markerName" type="termType" indexed="true" stored="true" required="false" />
-  <field name="markerSynonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-
   <field name="chromosome" type="string" indexed="true" stored="true" required="false" />
   <field name="startCoord" type="plong" indexed="true" stored="true" required="false" />
   <field name="endCoord" type="plong" indexed="true" stored="true" required="false" />
   <field name="strand" type="string" indexed="true" stored="true" required="false" />
+  <field name="sequenceNum" type="plong" indexed="true" stored="true" required="false" />
 
-  <field name="tags" type="string" indexed="true" stored="true" required="false" />
+<!-- fields related to filtering, must be kept in sync with other Quick Search buckets -->
 
-  <field name="functionAnnotationsID" type="string" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="functionAnnotationsTerm" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="functionAnnotationsSynonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="functionAnnotationsDefinition" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-
-  <field name="processAnnotationsID" type="string" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="processAnnotationsTerm" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="processAnnotationsSynonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="processAnnotationsDefinition" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-
-  <field name="componentAnnotationsID" type="string" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="componentAnnotationsTerm" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="componentAnnotationsSynonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="componentAnnotationsDefinition" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-
-  <field name="phenotypeAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="humanPhenotypeAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="gxdAnnotationsWithTS" type="termType" indexed="false" stored="true" required="false" multiValued="true" />
-  <field name="gxdAnnotations" type="termType" indexed="true" stored="false" required="false" multiValued="true" />
-  <field name="diseaseAnnotations" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="proteinDomains" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-
-  <!-- fields to be used for filtering results, must be kept in sync with qsVocabBucket schema -->
   <field name="goProcessFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="goFunctionFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="goComponentFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
@@ -328,40 +308,10 @@
   <field name="phenotypeFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="markerTypeFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
 
-  <!-- handling of non-mouse nomenclature:  first has "<organism term type>:<term>", the last has just the values
-       for searching -->
-  <field name="orthologNomenOrg" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="orthologNomen" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-
-  <field name="searchText" type="termType" indexed="true" stored="false" required="false" multiValued="true" />
-
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
 
-  <uniqueKey>primaryID</uniqueKey>
-
-  <!-- dump all the non-ID, non-nomenclature stuff to search into the searchText field -->
-  <copyField source="functionAnnotationsID" dest="searchText" />
-  <copyField source="functionAnnotationsTerm" dest="searchText" />
-  <copyField source="functionAnnotationsSynonym" dest="searchText" />
-  <copyField source="functionAnnotationsDefinition" dest="searchText" />
-
-  <copyField source="processAnnotationsID" dest="searchText" />
-  <copyField source="processAnnotationsTerm" dest="searchText" />
-  <copyField source="processAnnotationsSynonym" dest="searchText" />
-  <copyField source="processAnnotationsDefinition" dest="searchText" />
-
-  <copyField source="componentAnnotationsID" dest="searchText" />
-  <copyField source="componentAnnotationsTerm" dest="searchText" />
-  <copyField source="componentAnnotationsSynonym" dest="searchText" />
-  <copyField source="componentAnnotationsDefinition" dest="searchText" />
-
-  <copyField source="phenotypeAnnotations" dest="searchText" />
-  <copyField source="humanPhenotypeAnnotations" dest="searchText" />
-  <copyField source="gxdAnnotations" dest="searchText" />
-  <copyField source="diseaseAnnotations" dest="searchText" />
-  <copyField source="proteinDomains" dest="searchText" />
-  <copyField source="orthologNomen" dest="searchText" />
+  <uniqueKey>uniqueKey</uniqueKey>
 
 <!-- end custom data for this index -->
 </schema>
