@@ -276,21 +276,30 @@
     </analyzer>
   </fieldType>
 
-  <field name="primaryID" type="string" indexed="true" stored="true" required="true" />
-  <field name="accID" type="textTight" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="term" type="termType" indexed="true" stored="true" required="false" />
-  <field name="termType" type="string" indexed="false" stored="true" required="false" />
-  <field name="synonym" type="termType" indexed="true" stored="true" required="false" multiValued="true" />
-  <field name="definition" type="termType" indexed="true" stored="true" required="false" />
+<!-- fields related to searching , either searchID or searchTerm should be populated -->
+
+  <field name="uniqueKey" type="string" indexed="true" stored="true" required="true" />
+  <field name="searchID" type="textTight" indexed="true" stored="true" required="false" />
+  <field name="searchTerm" type="termType" indexed="true" stored="true" required="false" />
+  <field name="searchTermDisplay" type="string" indexed="false" stored="true" required="true" />
+  <field name="searchTermType" type="string" indexed="true" stored="true" required="true" />
+  <field name="searchTermWeight" type="pint" indexed="true" stored="true" required="true" />
+
+<!-- fields related to display -->
+
   <field name="vocabName" type="string" indexed="true" stored="true" required="true" />
   <field name="rawVocabName" type="string" indexed="true" stored="true" required="false" />
+  <field name="primaryID" type="string" indexed="true" stored="true" required="true" />
+  <field name="term" type="termType" indexed="true" stored="true" required="false" />
+  <field name="termType" type="string" indexed="false" stored="true" required="false" />
   <field name="detailUri" type="string" indexed="false" stored="true" required="false" />
   <field name="annotationCount" type="plong" indexed="true" stored="true" required="false" />
   <field name="annotationText" type="string" indexed="false" stored="true" required="false" />
   <field name="annotationUri" type="string" indexed="false" stored="true" required="false" />
-  <field name="sequenceNum" type="pint" indexed="true" stored="true" required="false" />
+  <field name="sequenceNum" type="plong" indexed="true" stored="true" required="false" />
 
   <!-- fields to be used for filtering results, must be kept in sync with qsFeatureBucket schema -->
+
   <field name="goProcessFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="goFunctionFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="goComponentFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
