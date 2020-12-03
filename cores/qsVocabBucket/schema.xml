@@ -242,7 +242,6 @@
   <dynamicField name="*_c" type="currency" indexed="true" stored="true"/>
 
   <copyField source="content" dest="text_shingles"/>
-  <copyField source="*" dest="_text_"/>
 -->
 
 <!-- begin custom data for this index -->
@@ -310,7 +309,7 @@
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
 
-  <uniqueKey>primaryID</uniqueKey>
+  <uniqueKey>uniqueKey</uniqueKey>
 
 <!-- end custom data for this index -->
 </schema>
