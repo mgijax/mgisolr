@@ -279,8 +279,8 @@
 <!-- fields related to searching , either searchID or searchTerm should be populated -->
 
   <field name="uniqueKey" type="string" indexed="true" stored="true" required="true" />
-  <field name="searchID" type="textTight" indexed="true" stored="true" required="false" />
-  <field name="searchTerm" type="termType" indexed="true" stored="true" required="false" />
+  <field name="searchTermExact" type="lowercase" indexed="true" stored="true" required="false" />
+  <field name="searchTermStemmed" type="termType" indexed="true" stored="true" required="false" />
   <field name="searchTermDisplay" type="string" indexed="false" stored="true" required="true" />
   <field name="searchTermType" type="string" indexed="true" stored="true" required="true" />
   <field name="searchTermWeight" type="pint" indexed="true" stored="true" required="true" />
