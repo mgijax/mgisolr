@@ -280,6 +280,7 @@
 
   <field name="uniqueKey" type="string" indexed="true" stored="true" required="true" />
   <field name="searchTermExact" type="lowercase" indexed="true" stored="true" required="false" />
+  <field name="searchTermInexact" type="textTight" indexed="true" stored="true" required="false" />
   <field name="searchTermStemmed" type="termType" indexed="true" stored="true" required="false" />
   <field name="searchTermDisplay" type="string" indexed="false" stored="true" required="true" />
   <field name="searchTermType" type="string" indexed="true" stored="true" required="true" />
