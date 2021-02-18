@@ -25,6 +25,7 @@ mpCorrelationMatrix
 probe
 qsVocabBucket
 qsFeatureBucket
+qsAlleleBucket
 qsStrainBucket
 recombinaseMatrix
 reference
