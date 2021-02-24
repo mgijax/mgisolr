@@ -26,6 +26,7 @@ probe
 qsVocabBucket
 qsFeatureBucket
 qsAlleleBucket
+qsLookup
 qsStrainBucket
 recombinaseMatrix
 reference
