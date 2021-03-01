@@ -289,11 +289,7 @@
 <!-- fields related to display -->
 
   <field name="featureType" type="string" indexed="true" stored="true" required="false" />
-  <field name="isMarker" type="pint" indexed="true" stored="true" required="false" />
-  <field name="symbol" type="termType" indexed="true" stored="true" required="false" />
   <field name="primaryID" type="string" indexed="true" stored="true" required="true" />
-  <field name="name" type="termType" indexed="true" stored="true" required="false" />
-  <field name="detailUri" type="string" indexed="false" stored="true" required="false" />
   <field name="chromosome" type="string" indexed="true" stored="true" required="false" />
   <field name="startCoord" type="plong" indexed="true" stored="true" required="false" />
   <field name="endCoord" type="plong" indexed="true" stored="true" required="false" />
