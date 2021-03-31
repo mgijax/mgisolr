@@ -28,6 +28,7 @@ qsFeatureBucket
 qsAlleleBucket
 qsLookup
 qsStrainBucket
+qsOtherBucket
 recombinaseMatrix
 reference
 sequence
