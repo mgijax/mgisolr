@@ -291,7 +291,7 @@
   <field name="primaryID" type="string" indexed="true" stored="true" required="true" />
   <field name="name" type="termType" indexed="true" stored="true" required="false" />
   <field name="objectType" type="string" indexed="true" stored="true" required="true" />
-  <field name="objectSubType" type="string" indexed="true" stored="true" required="true" />
+  <field name="objectSubType" type="string" indexed="true" stored="true" required="false" />
   <field name="detailUri" type="string" indexed="false" stored="true" required="false" />
   <field name="sequenceNum" type="plong" indexed="true" stored="true" required="false" />
 
