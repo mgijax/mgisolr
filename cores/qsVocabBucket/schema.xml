@@ -275,7 +275,8 @@
     </analyzer>
   </fieldType>
 
-<!-- fields related to searching , either searchID or searchTerm should be populated -->
+<!-- fields related to searching by text: Either searchTermExact, searchTermInexact, or searchTermStemmed
+        should be populated for documents to be searched by text. -->
 
   <field name="uniqueKey" type="string" indexed="true" stored="true" required="true" />
   <field name="searchTermExact" type="lowercase" indexed="true" stored="true" required="false" />
@@ -284,6 +285,15 @@
   <field name="searchTermDisplay" type="string" indexed="false" stored="true" required="true" />
   <field name="searchTermType" type="string" indexed="true" stored="true" required="true" />
   <field name="searchTermWeight" type="pint" indexed="true" stored="true" required="true" />
+
+<!-- fields related to searching by coordinates (human and mouse in separate documents): These should only
+        be filled in for documents to be searched by coordinates. -->
+
+  <field name="searchCoordType" type="string" indexed="true" stored="true" required="false" />
+  <field name="searchChromosome" type="string" indexed="true" stored="true" required="false" />
+  <field name="searchStartCoord" type="plong" indexed="true" stored="true" required="false" />
+  <field name="searchEndCoord" type="plong" indexed="true" stored="true" required="false" />
+  <field name="coordSequenceNum" type="plong" indexed="true" stored="true" required="false" />
 
 <!-- fields related to display -->
 
