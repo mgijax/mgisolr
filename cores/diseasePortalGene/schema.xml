@@ -307,10 +307,6 @@
   <field name="markerMgiId" type="textTight" indexed="true" stored="true" />
   <field name="featureType" type="string" indexed="true" stored="true" />
   <field name="filterableFeatureTypes" type="string" indexed="true" stored="true" multiValued="true" />
-  <!-- mc = mouseCoordinate ; shortened for efficiency -->
-  <field name="mc" type="geneticLocation" indexed="true" stored="false" multiValued="true" />
-  <!-- hc = humanCoordinate ; shortened for efficiency -->
-  <field name="hc" type="geneticLocation" indexed="true" stored="false" multiValued="true" />
   <!-- mSy = markerSynonym ; shortened for efficiency -->
   <field name="mSy" type="nomen" indexed="true" stored="false" multiValued="true" />
   <field name="mSySingleToken" type="nomen" indexed="true" stored="false" multiValued="true" />
