@@ -305,6 +305,7 @@
   <field name="referenceCount" type="pint" indexed="true" stored="true" required="false" />
   <field name="referenceUri" type="string" indexed="false" stored="true" required="false" />
   <field name="sequenceNum" type="plong" indexed="true" stored="true" required="false" />
+  <field name="imsrID" type="string" indexed="false" stored="true" required="false" />
 
 <!-- fields related to filtering, must be kept in sync with other Quick Search buckets -->
 
