@@ -295,6 +295,9 @@
   <field name="structureId" type="string" indexed="true" stored="false" multiValued="true" />
   <field name="structureKey" type="string" indexed="true" stored="false" multiValued="true" />
 
+  <!-- All EMAPA structures (and their ancestors) where recombinase activity is detected.  -->
+  <field name="allStructures" type="anatomy" indexed="true" stored="true" multiValued="true" />
+
   <!-- terms containing all of the allele's detected recombinase activity:
        There will be no recombinase activity for the allele detected outside
        each of these structures.  (This will be a path of terms from the root
