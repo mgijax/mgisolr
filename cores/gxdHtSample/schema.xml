@@ -295,6 +295,8 @@ catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
   <field name="structureTerm" type="text" indexed="true" stored="true" />
   <field name="structureID" type="textTight" indexed="true" stored="true" />
   <field name="theilerStage" type="pint" indexed="true" stored="true" />
+  <field name="celltypeTerm" type="text" indexed="true" stored="true" />
+  <field name="celltypeID" type="text" indexed="true" stored="true" />
   <field name="age" type="text" indexed="true" stored="true" />
   <field name="ageMin" type="pfloat" indexed="true" stored="false" />
   <field name="ageMax" type="pfloat" indexed="true" stored="false" />
