@@ -274,6 +274,8 @@
 
   <!-- Driver fields -->
   <field name="driver" type="lowercase" indexed="true" stored="true" />
+  <field name="driverSearch" type="lowercase" indexed="true" stored="true" multiValued="true" />
+  <field name="driverFacet" type="string" indexed="true" stored="true" />
   <!-- copyfield for driver -->
   <field name="driverExact" type="string" indexed="true" stored="true" />
   <field name="byReferenceCount" type="pint" indexed="true" stored="false" />
@@ -294,6 +296,9 @@
   <field name="detected" type="boolean" indexed="true" stored="true" required="true" />
   <field name="structureId" type="string" indexed="true" stored="false" multiValued="true" />
   <field name="structureKey" type="string" indexed="true" stored="false" multiValued="true" />
+
+  <!-- All EMAPA structures where recombinase activity is directly detected.  -->
+  <field name="allStructuresDirect" type="anatomy" indexed="true" stored="true" multiValued="true" />
 
   <!-- All EMAPA structures (and their ancestors) where recombinase activity is detected.  -->
   <field name="allStructures" type="anatomy" indexed="true" stored="true" multiValued="true" />
