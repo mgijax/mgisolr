@@ -342,6 +342,8 @@
 
   <!-- location -->
   <field name="chromosome" type="lowercase" indexed="true" stored="true" />
+  <field name="genomic_chromosome" type="lowercase" indexed="true" stored="true" />
+  <field name="genetic_chromosome" type="lowercase" indexed="true" stored="true" />
   <field name="cm" type="pdouble" indexed="true" stored="true" />
   <field name="startCoord" type="pint" indexed="true" stored="true" />
   <field name="endCoord" type="pint" indexed="true" stored="true" />
