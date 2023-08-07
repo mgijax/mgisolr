@@ -1,0 +1,6 @@
+.DS_Store
+.pydevproject
+*.pyc
+*.tmp
+*.swp
+Configuration

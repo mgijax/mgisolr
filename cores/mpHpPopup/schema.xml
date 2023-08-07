@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solr managed schema - automatically generated - DO NOT EDIT -->
+<schema name="authorsAC" version="1.6">
+  <fieldType name="ancestor_path" class="solr.TextField">
+    <analyzer type="index">
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="binary" class="solr.BinaryField"/>
+  <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+  <fieldType name="booleans" class="solr.BoolField" sortMissingLast="true" multiValued="true"/>
+  <fieldType name="descendent_path" class="solr.TextField">
+    <analyzer type="index">
+      <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="ignored" class="solr.StrField" indexed="false" stored="false" multiValued="true"/>
+  <fieldType name="location" class="solr.LatLonType" subFieldSuffix="_coordinate"/>
+  <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
+  <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="phonetic_en" class="solr.TextField" indexed="true" stored="false">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.DoubleMetaphoneFilterFactory" inject="false"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="pdate" class="solr.DatePointField" docValues="true"/>
+  <fieldType name="pdates" class="solr.DatePointField" docValues="true" multiValued="true"/>
+  <fieldType name="pdouble" class="solr.DoublePointField" docValues="true"/>
+  <fieldType name="pdoubles" class="solr.DoublePointField" docValues="true" multiValued="true"/>
+  <fieldType name="pfloat" class="solr.FloatPointField" docValues="true"/>
+  <fieldType name="pfloats" class="solr.FloatPointField" docValues="true" multiValued="true"/>
+  <fieldType name="pint" class="solr.IntPointField" docValues="true"/>
+  <fieldType name="pints" class="solr.IntPointField" docValues="true" multiValued="true"/>
+  <fieldType name="plong" class="solr.LongPointField" docValues="true"/>
+  <fieldType name="plongs" class="solr.LongPointField" docValues="true" multiValued="true"/>
+  <fieldType name="point" class="solr.PointType" subFieldSuffix="_d" dimension="2"/>
+  <fieldType name="random" class="solr.RandomSortField" indexed="true"/>
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
+  <fieldType name="strings" class="solr.StrField" sortMissingLast="true" multiValued="true"/>
+
+
+<!-- begin custom data for this index -->
+
+  <!-- Less flexible matching, but less false matches.  Probably not ideal for product names,
+       but may be good for SKUs.  Can insert dashes in the wrong place and still match. -->
+  <fieldType name="textTight" class="solr.TextField" positionIncrementGap="100" >
+    <analyzer>
+      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <!-- this filter can remove any duplicate tokens that appear at the same position - sometimes
+           possible with WordDelimiterFilter in conjuncton with stemming. -->
+      <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <field name="uniqueKey" type="string" indexed="true" stored="true" />
+  <field name="searchTermID" type="string" indexed="true" stored="true" />
+  <field name="searchTerm" type="string" indexed="flase" stored="true" />
+  <field name="matchTermID" type="string" indexed="flase" stored="true" />
+  <field name="matchTerm" type="string" indexed="flase" stored="true" />
+  <field name="matchMethod" type="string" indexed="flase" stored="true" />
+  <field name="matchType" type="string" indexed="flase" stored="true" />
+  <field name="matchTermSynonym" type="string" indexed="flase" stored="true" />
+  <field name="matchTermDefinition" type="string" indexed="flase" stored="true" />
+
+
+<!--
+  <field name="markerKey" type="string" multiValued="true" indexed="true" stored="false" />
+  <field name="alleleKey" type="string" multiValued="true" indexed="true" stored="false" />
+-->
+
+  <!-- This is a Solr-required field -->
+  <field name="_version_" type="plong" indexed="true" stored="true" />
+
+  <uniqueKey required="false">uniqueKey</uniqueKey>
+
+<!-- end custom data for this index -->
+</schema>
