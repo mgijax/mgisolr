@@ -23,6 +23,7 @@ marker
 markerAnnotation
 mpAnnotation
 mpCorrelationMatrix
+mpHpPopup
 probe
 qsVocabBucket
 qsFeatureBucket
