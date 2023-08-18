@@ -68,6 +68,7 @@
   <field name="uniqueKey" type="string" indexed="true" stored="true" />
   <field name="searchTermID" type="string" indexed="true" stored="true" />
   <field name="searchTerm" type="string" indexed="flase" stored="true" />
+  <field name="searchTermDefinition" type="string" indexed="flase" stored="true" />
   <field name="matchTermID" type="string" indexed="flase" stored="true" />
   <field name="matchTerm" type="string" indexed="flase" stored="true" />
   <field name="matchMethod" type="string" indexed="flase" stored="true" />
