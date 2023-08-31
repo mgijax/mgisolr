@@ -67,14 +67,17 @@
 
   <field name="uniqueKey" type="string" indexed="true" stored="true" />
   <field name="searchTermID" type="string" indexed="true" stored="true" />
-  <field name="searchTerm" type="string" indexed="flase" stored="true" />
-  <field name="searchTermDefinition" type="string" indexed="flase" stored="true" />
-  <field name="matchTermID" type="string" indexed="flase" stored="true" />
-  <field name="matchTerm" type="string" indexed="flase" stored="true" />
-  <field name="matchMethod" type="string" indexed="flase" stored="true" />
-  <field name="matchType" type="string" indexed="flase" stored="true" />
-  <field name="matchTermSynonym" type="string" indexed="flase" stored="true" />
-  <field name="matchTermDefinition" type="string" indexed="flase" stored="true" />
+  <field name="searchTerm" type="string" indexed="true" stored="true" />
+  <field name="vocabSort" type="string" indexed="true" stored="true" />
+  <field name="searchTermDefinition" type="string" indexed="false" stored="true" />
+  <field name="matchTermID" type="string" indexed="false" stored="true" />
+  <field name="matchTerm" type="string" indexed="true" stored="true" />
+  <field name="matchMethod" type="string" indexed="false" stored="true" />
+  <field name="matchMethodSort" type="string" indexed="true" stored="true" />
+  <field name="matchType" type="string" indexed="false" stored="true" />
+  <field name="matchTypeSort" type="string" indexed="true" stored="true" />
+  <field name="matchTermSynonym" type="string" indexed="false" stored="true" />
+  <field name="matchTermDefinition" type="string" indexed="false" stored="true" />
 
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
