@@ -304,6 +304,7 @@ catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
   <field name="name" type="text" indexed="true" stored="true" />
   <field name="organism" type="text" indexed="true" stored="true" />
   <field name="mutantAlleles" type="text" indexed="true" stored="true" />
+  <field name="mutantAlleleIds" type="string" indexed="true" stored="true" multiValued="true" />
   <field name="geneticBackground" type="text" indexed="true" stored="true" />
   <field name="relevancy" type="text" indexed="true" stored="true" />
   <field name="note" type="text" indexed="true" stored="true" />
