@@ -291,6 +291,9 @@ catenateNumbers="1" splitOnNumerics="0" catenateAll="0" splitOnCaseChange="0" pr
        set of stages.) -->
   <field name="exclusiveStages" type="string" indexed="true" stored="true" multiValued="true" />
 
+  <!-- All structure (and ancestor) keys where all "detected = yes" -->
+  <field name="allStructures" type="string" indexed="true" stored="true" multiValued="true" />
+
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
 
