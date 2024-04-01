@@ -1,2 +1,2 @@
 # path to the Solr installation directory
-SOLR_PATH       /usr/local/mgi/solr8/solr-8.5.2/
+SOLR_PATH       /usr/local/mgi/solr8/solr-8.11.3/
