@@ -370,7 +370,7 @@
          be based on the last SolrCore to be initialized.
 
       -->
-    <maxBooleanClauses>${solr.max.booleanClauses:8192}</maxBooleanClauses>
+    <maxBooleanClauses>${solr.max.booleanClauses:50000}</maxBooleanClauses>
 
 
     <!-- Solr Internal Query Caches
