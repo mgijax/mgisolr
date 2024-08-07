@@ -309,7 +309,7 @@ catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
     </analyzer>
   </fieldType>
 
-  <field name="accID" type="textTight" indexed="true" stored="false" required="false" multiValued="true" />
+  <field name="accID" type="textTight" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="diseaseId" type="textTight" indexed="true" stored="false"  multiValued="true" />
   <field name="diseaseRelevantMarkerId" type="textTight" indexed="true" stored="false"  multiValued="true" />
   <field name="phenoMarkerId" type="textTight" indexed="true" stored="false"  multiValued="true" />
@@ -317,6 +317,7 @@ catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
   <field name="referenceKey" type="string" indexed="true" stored="true" required="true" />
   <field name="journal" type="lowercase" indexed="true" stored="false" />
   <field name="year" type="pint" indexed="true" stored="true" />
+  <field name="jnum" type="pint" indexed="true" stored="true" />
   <field name="authorsFormatted" type="lowercase" indexed="true" stored="true" multiValued="true" />
   <field name="authorFacet" type="keyword" indexed="true" stored="true" multiValued="true" />
   <field name="journalFacet" type="keyword" indexed="true" stored="true" multiValued="true"/>
