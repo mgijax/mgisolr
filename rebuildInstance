@@ -6,7 +6,7 @@
 showUsage()
 {
     echo "Usage: $0 <set> <data dir>"
-    echo "    set : which set of indexes will this Solr instance contain? (fe, gxd, snp)"
+    echo "    set : which set of indexes will this Solr instance contain? (fe, gxd)"
     echo "    data dir : path to the directory of this Solr instance"
 }
 
@@ -31,7 +31,7 @@ TARGET_DIR=$2
 # Check count of index definition files for the specific set (direct errors to
 # /dev/null); if not 1, then we have an error.
 if [ `ls -al ./sets/${SET}.indexes 2>/dev/null | wc -l` -ne 1 ]; then
-    errorExit "Unrecognized set (${SET}) of indexes.  Choose fe, gxd, or snp."
+    errorExit "Unrecognized set (${SET}) of indexes.  Choose fe or gxd."
 fi
 
 # Check that parent directory exists.
