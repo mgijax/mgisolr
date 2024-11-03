@@ -281,6 +281,15 @@ catenateNumbers="1" splitOnNumerics="0" catenateAll="0" splitOnCaseChange="0" pr
   <!-- RNA-seq results. EMAPS terms and their ancestors. -->
   <field name="posRAnc" type="string" indexed="true" stored="true" multiValued="true" />
 
+  <!-- Classical results. EMAPA terms. -->
+  <field name="posCExactA" type="string" indexed="true" stored="true" multiValued="true" />
+  <!-- Classical results. EMAPA terms and their (stage aware) ancestors -->
+  <field name="posCAncA" type="string" indexed="true" stored="true" multiValued="true" />
+  <!-- RNA-seq results. EMAPA terms -->
+  <field name="posRExactA" type="string" indexed="true" stored="true" multiValued="true" />
+  <!-- RNA-seq results. EMAPA terms and their (stage aware) ancestors. -->
+  <field name="posRAncA" type="string" indexed="true" stored="true" multiValued="true" />
+
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
 
