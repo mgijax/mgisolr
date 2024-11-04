@@ -273,22 +273,22 @@ catenateNumbers="1" splitOnNumerics="0" catenateAll="0" splitOnCaseChange="0" pr
   <!-- These fields contain EMAPS keys of structures where this gene has expression. -->
 
   <!-- Classical results. EMAPS terms. -->
-  <field name="posCExact" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="posCExact" type="pint" indexed="true" stored="true" multiValued="true" />
   <!-- Classical results. EMAPS terms and their ancestors -->
-  <field name="posCAnc" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="posCAnc" type="pint" indexed="true" stored="true" multiValued="true" />
   <!-- RNA-seq results. EMAPS terms -->
-  <field name="posRExact" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="posRExact" type="pint" indexed="true" stored="true" multiValued="true" />
   <!-- RNA-seq results. EMAPS terms and their ancestors. -->
-  <field name="posRAnc" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="posRAnc" type="pint" indexed="true" stored="true" multiValued="true" />
 
   <!-- Classical results. EMAPA terms. -->
-  <field name="posCExactA" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="posCExactA" type="pint" indexed="true" stored="true" multiValued="true" />
   <!-- Classical results. EMAPA terms and their (stage aware) ancestors -->
-  <field name="posCAncA" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="posCAncA" type="pint" indexed="true" stored="true" multiValued="true" />
   <!-- RNA-seq results. EMAPA terms -->
-  <field name="posRExactA" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="posRExactA" type="pint" indexed="true" stored="true" multiValued="true" />
   <!-- RNA-seq results. EMAPA terms and their (stage aware) ancestors. -->
-  <field name="posRAncA" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="posRAncA" type="pint" indexed="true" stored="true" multiValued="true" />
 
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
