@@ -270,29 +270,25 @@ catenateNumbers="1" splitOnNumerics="0" catenateAll="0" splitOnCaseChange="0" pr
   <field name="markerKey" type="pint" indexed="true" stored="true" required="true" />
   <field name="markerMgiid" type="string" indexed="true" stored="true" />
 
-  <!-- positive structure and ts combination for doing differential search includes term + ancestors -->
-  <field name="posAnc" type="anatomy" indexed="true" stored="false" multiValued="true" />
-  <!-- same as positive case, but term must be exclusively expressed in its stage -->
-  <field name="excAnc" type="anatomy" indexed="true" stored="false" multiValued="true" />
-  <!-- same as positive case, but term must be exclusively expressed in all annotated stages -->
-  <field name="excAncAllStages" type="anatomy" indexed="true" stored="false" multiValued="true" />
-  <!-- negative structure and ts combination for doing differential search includes term + descendants -->
-  <field name="negDec" type="anatomy" indexed="true" stored="false" multiValued="true" />
+  <!-- These fields contain EMAPS keys of structures where this gene has expression. -->
 
-  <!-- Structure keys where all "detected = yes" expression results for the
-       marker are contained within this set of structures.  (All of the
-       marker's positive expression results occur in every structure in this
-       field.) -->
-  <field name="exclusiveStructures" type="string" indexed="true" stored="true" multiValued="true" />
+  <!-- Classical results. EMAPS terms. -->
+  <field name="posCExact" type="pint" indexed="true" stored="true" multiValued="true" />
+  <!-- Classical results. EMAPS terms and their ancestors -->
+  <field name="posCAnc" type="pint" indexed="true" stored="true" multiValued="true" />
+  <!-- RNA-seq results. EMAPS terms -->
+  <field name="posRExact" type="pint" indexed="true" stored="true" multiValued="true" />
+  <!-- RNA-seq results. EMAPS terms and their ancestors. -->
+  <field name="posRAnc" type="pint" indexed="true" stored="true" multiValued="true" />
 
-  <!-- Theiler stages where all "detected = yes" expression results for the
-       marker are contained within this set of stages.  (There are no
-       positive expression results for this marker that occur outside this
-       set of stages.) -->
-  <field name="exclusiveStages" type="string" indexed="true" stored="true" multiValued="true" />
-
-  <!-- All structure (and ancestor) keys where all "detected = yes" -->
-  <field name="allStructures" type="string" indexed="true" stored="true" multiValued="true" />
+  <!-- Classical results. EMAPA terms. -->
+  <field name="posCExactA" type="pint" indexed="true" stored="true" multiValued="true" />
+  <!-- Classical results. EMAPA terms and their (stage aware) ancestors -->
+  <field name="posCAncA" type="pint" indexed="true" stored="true" multiValued="true" />
+  <!-- RNA-seq results. EMAPA terms -->
+  <field name="posRExactA" type="pint" indexed="true" stored="true" multiValued="true" />
+  <!-- RNA-seq results. EMAPA terms and their (stage aware) ancestors. -->
+  <field name="posRAncA" type="pint" indexed="true" stored="true" multiValued="true" />
 
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />

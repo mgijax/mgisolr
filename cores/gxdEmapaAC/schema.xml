@@ -274,6 +274,18 @@
   <field name="endStage" type="string" indexed="false" stored="true" />
   <field name="accID" type="string" indexed="true" stored="true" />
 
+  <!-- fields to control filtering of terms for different ACs on the profile query form -->
+  <field name="showInCPosAC" type="boolean" indexed="false" stored="true" multiValued="false" />
+  <field name="showInCNegAC" type="boolean" indexed="false" stored="true" multiValued="false" />
+  <field name="showInRPosAC" type="boolean" indexed="false" stored="true" multiValued="false" />
+  <field name="showInRNegAC" type="boolean" indexed="false" stored="true" multiValued="false" />
+
+  <!-- fields defining valid stages (comma separated string) -->
+  <field name="stagesCPosAC" type="string" indexed="false" stored="true" multiValued="false" />
+  <field name="stagesCNegAC" type="string" indexed="false" stored="true" multiValued="false" />
+  <field name="stagesRPosAC" type="string" indexed="false" stored="true" multiValued="false" />
+  <field name="stagesRNegAC" type="string" indexed="false" stored="true" multiValued="false" />
+
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
 
