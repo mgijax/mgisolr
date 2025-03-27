@@ -4,7 +4,7 @@ The mgisolr product includes:
 
 It assumes:
 - The directory containing the Solr instance is defined in SOLR_HOME.
-- The currently supported Solr version is 8.5.2.
+- The currently supported Solr version is 8.11.3.
 
 To add support for a new Solr instance (named `x`, for instance):
 1. Go into the `sets/` directory.
