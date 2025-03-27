@@ -260,6 +260,7 @@
   <field name="age" type="string" indexed="false" stored="true" />
   <field name="printname" type="string" indexed="false" stored="true" />
   <field name="sex" type="string" indexed="false" stored="true" />
+  <field name="bioreplicateCount" type="pint" indexed="false" stored="true" />
 
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
