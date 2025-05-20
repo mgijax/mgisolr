@@ -275,8 +275,8 @@ catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
    <field name="experimentKey" type="string" indexed="true" stored="true" required="true" />
    <field name="arrayExpressID" type="textTight" indexed="true" stored="true" />
    <field name="geoID" type="textTight" indexed="true" stored="true" />
-   <field name="method" type="text" indexed="true" stored="true" />
-   <field name="rnaseqType" type="text" indexed="true" stored="true" multiValued="true" />
+   <field name="method" type="string" indexed="true" stored="true" />
+   <field name="methods" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="title" type="text" indexed="true" stored="true" />
    <field name="description" type="text" indexed="true" stored="true" />
    <field name="sampleCount" type="pint" indexed="true" stored="true" />

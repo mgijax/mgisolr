@@ -302,7 +302,6 @@ catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
   <field name="ageMax" type="pfloat" indexed="true" stored="false" />
   <field name="sex" type="text" indexed="true" stored="true" />
   <field name="name" type="text" indexed="true" stored="true" />
-  <field name="rnaseqType" type="text" indexed="true" stored="true" />
   <field name="organism" type="text" indexed="true" stored="true" />
   <field name="mutantAlleles" type="text" indexed="true" stored="true" />
   <field name="mutantAlleleIds" type="string" indexed="true" stored="true" multiValued="true" />
