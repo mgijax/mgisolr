@@ -299,6 +299,7 @@ catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
   <field name="celltypeID" type="text" indexed="true" stored="true" />
   <field name="ctSearchIDs" type="string" indexed="true" stored="true" multiValued="true" />
   <field name="ctSearchTerms" type="string" indexed="true" stored="true" multiValued="true" />
+  <field name="ctFacetTerms" type="string" indexed="true" stored="true" multiValued="true" />
   <field name="age" type="text" indexed="true" stored="true" />
   <field name="ageMin" type="pfloat" indexed="true" stored="false" />
   <field name="ageMax" type="pfloat" indexed="true" stored="false" />
