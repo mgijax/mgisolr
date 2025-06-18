@@ -415,6 +415,7 @@
   <field name="goHeadersCC" type="string" indexed="true" stored="true" multiValued="true" required="false" />
   <field name="goHeadersMF" type="string" indexed="true" stored="true" multiValued="true" required="false" />
   <field name="doHeaders" type="string" indexed="true" stored="true" multiValued="true" required="false" />
+  <field name="coHeaders" type="string" indexed="true" stored="true" multiValued="true" required="false" />  
   <field name="featureTypes" type="string" indexed="true" stored="true" multiValued="true" required="false" />
 
   <!-- This is a Solr-required field -->
