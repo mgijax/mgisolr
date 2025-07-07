@@ -309,6 +309,7 @@ catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
   <field name="mutantAlleles" type="text" indexed="true" stored="true" />
   <field name="mutantAlleleIds" type="string" indexed="true" stored="true" multiValued="true" />
   <field name="geneticBackground" type="text" indexed="true" stored="true" />
+  <field name="method" type="text" indexed="true" stored="true" />
   <field name="relevancy" type="text" indexed="true" stored="true" />
   <field name="note" type="text" indexed="true" stored="true" />
   <field name="byDefault" type="pint" indexed="true" stored="true" />
@@ -319,7 +320,7 @@ catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
   <field name="strainSearch" type="lowercase" indexed="true" stored="false" />
 
   <!-- experiment attributes needed for searching -->
-  <field name="method" type="text" indexed="true" stored="true" />
+  <field name="methods" type="text" indexed="true" stored="true" multiValued="true" />
   <field name="title" type="textHT" indexed="true" stored="false" />
   <field name="description" type="textHT" indexed="true" stored="false" />
   <field name="titleDescription" type="textHT" indexed="true" stored="false" multiValued="true" />
