@@ -282,6 +282,7 @@ catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
    <field name="sampleCount" type="pint" indexed="true" stored="true" />
    <field name="experimentalVariables" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="pubmedIDs" type="text" indexed="true" stored="true" multiValued="true" />
+   <field name="jnumIDs" type="text" indexed="true" stored="true" multiValued="true" />
    <field name="studyType" type="string" indexed="true" stored="true" />
    <field name="note" type="text" indexed="true" stored="true" />
    <field name="byDefault" type="pint" indexed="true" stored="true" />
