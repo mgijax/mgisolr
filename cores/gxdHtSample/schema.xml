@@ -325,8 +325,8 @@ catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
   <field name="description" type="textHT" indexed="true" stored="false" />
   <field name="titleDescription" type="textHT" indexed="true" stored="false" multiValued="true" />
   <field name="studyType" type="string" indexed="true" stored="true" />
-  <field name="referenceID" type="textTight" indexed="true" stored="false" multiValued="true" />
-  <field name="experimentID" type="textTight" indexed="true" stored="false" multiValued="true" />
+  <field name="referenceID" type="textTight" indexed="true" stored="true" multiValued="true" />
+  <field name="experimentID" type="textTight" indexed="true" stored="true" multiValued="true" />
   <field name="experimentalVariables" type="string" indexed="true" stored="true" multiValued="true" />
 
   <!-- This is a Solr-required field -->
