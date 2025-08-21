@@ -394,6 +394,7 @@
   <field name="figurePlain" type="string" indexed="false" stored="true" multiValued="true"/>
   <field name="genotype" type="string" indexed="false" stored="true" />
   <field name="jNum" type="string" indexed="true" stored="true" />
+  <field name="jNums" type="string" indexed="true" stored="true" multiValued="true" />
   <field name="pubmedId" type="string" indexed="false" stored="true" />
   <field name="shortCitation" type="string" indexed="false" stored="true" />
   <field name="pattern" type="string" indexed="false" stored="true" />
