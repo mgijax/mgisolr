@@ -291,7 +291,9 @@
   <!-- Result fields -->
   <field name="resultKey" type="string" indexed="true" stored="true" required="true" />
   <field name="annotatedStructure" type="string" indexed="true" stored="true" />
-  <field name="annotatedStructureKey" type="string" indexed="true" stored="false" />
+  <field name="annotatedStructureKey" type="string" indexed="true" stored="true" />
+  <field name="annotatedCellType" type="string" indexed="true" stored="true" />
+  <field name="annotatedCellTypeKey" type="string" indexed="true" stored="true" />
   <field name="structureSearch" type="anatomy" indexed="true" stored="true" multiValued="true" />
   <field name="detected" type="boolean" indexed="true" stored="true" required="true" />
   <field name="structureId" type="string" indexed="true" stored="false" multiValued="true" />
@@ -299,9 +301,13 @@
 
   <!-- All EMAPA structures where recombinase activity is directly detected.  -->
   <field name="allStructuresDirect" type="anatomy" indexed="true" stored="true" multiValued="true" />
-
   <!-- All EMAPA structures (and their ancestors) where recombinase activity is detected.  -->
   <field name="allStructures" type="anatomy" indexed="true" stored="true" multiValued="true" />
+
+  <!-- All CL structures where recombinase activity is directly detected.  -->
+  <field name="allCellTypesDirect" type="anatomy" indexed="true" stored="true" multiValued="true" />
+  <!-- All CL structures (and their ancestors) where recombinase activity is detected.  -->
+  <field name="allCellTypes" type="anatomy" indexed="true" stored="true" multiValued="true" />
 
   <!-- terms containing all of the allele's detected recombinase activity:
        There will be no recombinase activity for the allele detected outside
