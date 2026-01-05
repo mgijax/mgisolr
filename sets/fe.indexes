@@ -1,6 +1,7 @@
 # names of indexes expected to be in an fe Solr server, one per line
 allele
 anatomyAC
+antibody
 authorsAC
 cdna
 creAssayResult
