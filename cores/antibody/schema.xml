@@ -267,11 +267,14 @@
        (An antibody with multiple markers will have a document for each.) -->
   <field name="markerID" type="textTight" indexed="true" stored="true" multiValued="true" />
 
-  <!-- sequence number for sorting the antibodies by type then name -->
-  <field name="byType" type="pint" indexed="true" stored="true" />
-
-  <!-- sequence number for sorting the antibodies by name then type -->
+  <!-- sequence number for sorting the antibodies by name then ID -->
   <field name="byName" type="pint" indexed="true" stored="true" />
+
+  <!-- sequence number for sorting the antibodies by gene symbol then antibody name then ID -->
+  <field name="byGene" type="pint" indexed="true" stored="true" />
+
+  <!-- sequence number for sorting the antibodies by #refs then name then ID -->
+  <field name="byRefCount" type="pint" indexed="true" stored="true" />
 
   <!-- JSON representation of the antibody's data for display -->
   <field name="antibody" type="string" indexed="false" stored="true" />
