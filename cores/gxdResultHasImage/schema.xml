@@ -378,7 +378,7 @@
   <field name="tpmLevel" type="string" indexed="true" stored="true" />
   <field name="biologicalReplicates" type="string" indexed="false" stored="true" />
   <field name="strain" type="string" indexed="false" stored="true" />
-  <field name="sex" type="string" indexed="false" stored="true" />
+  <field name="sex" type="string" indexed="true" stored="true" />
   <field name="notes" type="string" indexed="false" stored="true" />
 
   <!-- result summary -->
