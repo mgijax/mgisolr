@@ -316,6 +316,7 @@
   <field name="markerTypeFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="expressionFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
   <field name="mutationFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="attributeFacets" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
 
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
