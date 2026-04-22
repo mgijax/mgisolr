@@ -301,6 +301,7 @@
   <field name="featureType" type="string" indexed="true" stored="true" required="false" />
   <field name="primaryID" type="string" indexed="true" stored="true" required="true" />
   <field name="synonyms" type="strings" indexed="true" stored="true" required="false" multiValued="true" />
+  <field name="collection" type="string" indexed="true" stored="true" required="false" />
   <field name="chromosome" type="string" indexed="true" stored="true" required="false" />
   <field name="startCoord" type="plong" indexed="true" stored="true" required="false" />
   <field name="endCoord" type="plong" indexed="true" stored="true" required="false" />
