@@ -24,7 +24,7 @@ cd ${SOLR_PATH}/bin
 SOLR_LOGS_DIR="<<LOG_DIR>>"
 export SOLR_LOGS_DIR
 
-./solr start -s <<DATA_DIR>> -p <<PORT>> -m <<RAM>>
+./solr start -s <<DATA_DIR>> -p <<PORT>> -m <<RAM>> -Dsolr.config.lib.enabled=true
 CODE=$?
 cd ${CWD}
 exit ${CODE}
