@@ -98,6 +98,14 @@
     </analyzer>
   </fieldType>
 
+  <fieldType name="largeString" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.KeywordTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
+ 
+
+
   <field name="primaryID" type="string" indexed="true" stored="true" required="true" />
   <field name="accID" type="textTight" indexed="true" stored="false" required="false" multiValued="true" />
   <field name="term" type="termType" indexed="true" stored="false" required="false" />
@@ -106,7 +114,7 @@
   <field name="sequenceNum" type="pint" indexed="true" stored="true" required="false" />
   <field name="vocabName" type="string" indexed="true" stored="false" required="true" />
   <field name="dagName" type="string" indexed="true" stored="false" required="false" />
-  <field name="browserTerm" type="string" indexed="false" stored="true" required="true" />
+  <field name="browserTerm" type="largeString" indexed="false" stored="true" required="true" />
   <field name="crossRef" type="textTight" indexed="true" stored="false" required="false" multiValued="true" />
 
   <!-- This is a Solr-required field -->
