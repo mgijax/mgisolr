@@ -78,7 +78,7 @@
     </analyzer>
   </fieldType>
 
-  <fieldType name="alphaNumSort" class="solr.TextField" sortMissingLast="true" omitNorms="true">
+  <fieldType name="alphaNumSort" class="solr.SortableTextField" sortMissingLast="true" omitNorms="true">
     <analyzer>
       <tokenizer class="solr.KeywordTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory" />
