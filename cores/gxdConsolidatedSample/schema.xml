@@ -28,7 +28,7 @@
   <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
 -->
 
-  <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+  <fieldType name="lowercase" class="solr.SortableTextField" positionIncrementGap="100">
     <analyzer>
       <tokenizer class="solr.KeywordTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory"/>
@@ -73,7 +73,6 @@
 
   <!-- is the EMAPA ID for the annotated structure -->
   <field name="structureExact" type="lowercase" indexed="true" stored="true" />
-
   <field name="theilerStage" type="pint" indexed="true" stored="true" />
   <field name="strain" type="string" indexed="false" stored="true" />
   <field name="genotype" type="string" indexed="false" stored="true" />
