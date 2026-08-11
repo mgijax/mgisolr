@@ -28,7 +28,7 @@
   <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
 -->
 
-  <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+  <fieldType name="lowercase" class="solr.SortableTextField" positionIncrementGap="100">
     <analyzer>
       <tokenizer class="solr.KeywordTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory"/>
@@ -54,7 +54,7 @@
   <fieldType name="random" class="solr.RandomSortField" indexed="true"/>
   <fieldType name="string" class="solr.StrField" sortMissingLast="true"/>
   <fieldType name="strings" class="solr.StrField" sortMissingLast="true" multiValued="true"/>
-  <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100" multiValued="true">
+  <fieldType name="text_general" class="solr.SortableTextField" positionIncrementGap="100" multiValued="true">
     <analyzer type="index">
       <tokenizer name="standard"/>
       <filter name="lowercase"/>
@@ -68,7 +68,7 @@
 
 <!-- begin custom data for this index -->
 
-  <fieldType name="edgytext" class="solr.TextField" positionIncrementGap="100">
+  <fieldType name="edgytext" class="solr.SortableTextField" positionIncrementGap="100">
     <analyzer type="index">
       <tokenizer class="solr.WhitespaceTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory"/>
@@ -84,7 +84,7 @@
          With various TokenFilterFactories to produce a sortable field
          that does not include some properties of the source text
       -->
-   <fieldType name="alphaOnlySort" class="solr.TextField" sortMissingLast="true" omitNorms="true">
+   <fieldType name="alphaOnlySort" class="solr.SortableTextField" sortMissingLast="true" omitNorms="true">
      <analyzer>
        <!-- KeywordTokenizer does no actual tokenizing, so the entire
             input string is preserved as a single token

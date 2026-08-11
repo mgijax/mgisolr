@@ -28,7 +28,7 @@
   <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
 -->
 
-  <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+  <fieldType name="lowercase" class="solr.SortableTextField" positionIncrementGap="100">
     <analyzer>
       <tokenizer class="solr.KeywordTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory"/>
@@ -71,7 +71,7 @@
 
   <!-- Less flexible matching, but less false matches.  Probably not ideal for product names,
        but may be good for SKUs.  Can insert dashes in the wrong place and still match. -->
-  <fieldType name="textTight" class="solr.TextField" positionIncrementGap="100" >
+  <fieldType name="textTight" class="solr.SortableTextField" positionIncrementGap="100" >
     <analyzer>
       <tokenizer class="solr.WhitespaceTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory"/>

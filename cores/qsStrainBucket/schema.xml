@@ -28,7 +28,7 @@
   <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType" geo="true" maxDistErr="0.001" distErrPct="0.025" distanceUnits="kilometers"/>
 -->
 
-  <fieldType name="lowercase" class="solr.TextField" positionIncrementGap="100">
+  <fieldType name="lowercase" class="solr.SortableTextField" positionIncrementGap="100">
     <analyzer>
       <tokenizer class="solr.KeywordTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory"/>
@@ -69,7 +69,7 @@
 
 <!-- begin custom data for this index -->
 
-  <fieldType name="textTight" class="solr.TextField" positionIncrementGap="100" >
+  <fieldType name="textTight" class="solr.SortableTextField" positionIncrementGap="100" >
     <analyzer>
       <tokenizer class="solr.WhitespaceTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory"/>
@@ -79,7 +79,7 @@
     </analyzer>
   </fieldType>
 
-  <fieldType name="termType" class="solr.TextField" positionIncrementGap="100">
+  <fieldType name="termType" class="solr.SortableTextField" positionIncrementGap="100">
     <analyzer type="index">
       <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(')" replacement=""/>
       <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(-)" replacement=" "/>
