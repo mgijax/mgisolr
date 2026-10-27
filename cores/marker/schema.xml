@@ -120,6 +120,7 @@
   <field name="markerID" type="textTight" indexed="true" stored="false" multiValued="true"/>
   <field name="markerSymbol" type="textTight" indexed="true" stored="true" />
   <field name="markerType" type="lowercase" indexed="true" stored="true" />
+  <field name="markerTypeStr" type="string" indexed="false" docValues="true"/>
   <field name="featureType" type="lowercase" indexed="true" stored="true" />
   <field name="featureTypeKey" type="string" indexed="true" stored="false" />
   <field name="markerName" type="textTight" indexed="true" stored="true" />
@@ -182,6 +183,7 @@
   <!-- This is a Solr-required field -->
   <field name="_version_" type="plong" indexed="true" stored="true" />
 
+  <copyField source="markerType" dest="markerTypeStr"/>
   <copyField source="humanName" dest="markerNomen" />
   <copyField source="humanSynonym" dest="markerNomen" />
   <copyField source="humanSymbol" dest="markerNomen" />
